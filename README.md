@@ -3,6 +3,10 @@
 This package gives you a method to handle forms in any forms in any framework
 from front-end to back-end.
 
+## Inspiration
+
+The surface API of this lib will be similar to PHP Symfony form component.
+
 # How it works ?
 
 Forms will be expressed by an `AbstractType`.
@@ -27,6 +31,30 @@ This way it will be really easy to extract form data.
 This binding will also help to do validation a entity level with
 decorators based validation.
 
- 
+# API
+
+## Express a form
+
+```typescript
+class UserType extends AbstractType 
+{
+    buildForm(builder: FormBuilder, options: Object) {
+        builder
+            .add('email', EmailType, {
+                label: 'User email',
+                validations: []
+            })
+            .add('password', PasswordType, {
+                label: 'User email',
+                validations: []
+            })
+    }
+
+    getBoundEntity(): { new(...args: any[]): any } {
+        return User
+    }
+}
+```
+
 
  
